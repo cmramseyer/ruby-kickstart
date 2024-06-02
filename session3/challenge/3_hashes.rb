@@ -6,3 +6,13 @@
 #
 # Example:
 # word_count "The dog and the cat" # => {"the" => 2, "dog" => 1, "and" => 1, "cat" => 1}
+
+def word_count(str)
+  return {} if str == ""
+  words = str.scan(/\w+/).map(&:downcase)
+  results = {}
+  words.each do |word|
+    results[word] ||= words.count(word)
+  end
+  results
+end

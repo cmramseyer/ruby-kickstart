@@ -8,3 +8,11 @@
 # staircase 4  # => {1 => [], 3 => [2]}
 # staircase 5  # => {1 => [], 3 => [2], 5 =>[2, 4]}
 
+def staircase(n)
+  return {1 => []} if n == 1
+  if n.odd?
+    {n => (2..n).select(&:even?)}.merge(staircase(n-1))
+  else
+    {}.merge(staircase(n-1))
+  end
+end
